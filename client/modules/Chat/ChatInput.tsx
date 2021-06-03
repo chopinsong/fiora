@@ -385,7 +385,6 @@ function ChatInput() {
         if (message.length === 0) {
             return null;
         }
-
         if (
             message.startsWith(window.location.origin) &&
             message.match(/\/invite\/group\/[\w\d]+/)
@@ -402,8 +401,14 @@ function ChatInput() {
             );
             handleSendMessage(id, 'inviteV2', groupId);
         } else {
-            const id = addSelfMessage('text', xss(message));
-            handleSendMessage(id, 'text', message);
+            let msg=message;
+            let msg_new = ''
+            msg=msg.split('').reverse().join("")
+            for (let i = 0; i < msg.length; i++) {
+                msg_new+=String.fromCodePoint(msg.charCodeAt(i)+i+1)+(i+1<msg.length?String.fromCodePoint(msg.charCodeAt(i+1)-i-1):'#')
+            }
+            const id = addSelfMessage('text', xss(msg_new));
+            handleSendMessage(id, 'text', msg_new);
         }
 
         // @ts-ignore
@@ -607,7 +612,7 @@ function ChatInput() {
                 <input
                     className={Style.input}
                     type="text"
-                    placeholder="随便聊点啥吧, 不要无意义刷屏~~"
+                    placeholder="聊点啥吧"
                     maxLength={2048}
                     ref={$input}
                     onKeyDown={handleInputKeyDown}

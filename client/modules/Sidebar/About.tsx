@@ -14,13 +14,13 @@ function About(props: AboutProps) {
     return (
         <Dialog className={Style.about} visible={visible} title="关于" onClose={onClose}>
             <div>
-                <div className={Common.block}>
+                <div className={Common.block} style={{display:'none'}}>
                     <p className={Common.title}>作者</p>
                     <a href="https://suisuijiang.com" target="_black" rel="noopener noreferrer">
                         https://suisuijiang.com
                     </a>
                 </div>
-                <div className={Common.block}>
+                <div className={Common.block} style={{display:'none'}}>
                     <p className={Common.title}>如何搭建</p>
                     <a
                         href="https://yinxin630.github.io/fiora/zh-Hans/"
@@ -51,7 +51,7 @@ function About(props: AboutProps) {
                         <li>-rps: 石头剪刀布</li>
                     </ul>
                 </div>
-                <div className={Common.block}>
+                <div className={Common.block} style={{display:'none'}}>
                     <p className={Common.title}>友情链接</p>
                     <ul>
                         <li>

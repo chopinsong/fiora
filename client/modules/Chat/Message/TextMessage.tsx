@@ -10,7 +10,12 @@ interface TextMessageProps {
 
 function TextMessage(props: TextMessageProps) {
     // eslint-disable-next-line react/destructuring-assignment
-    const content = props.content
+    let c ='';
+    for (let i = 0; i < props.content.length; i=i+2) {
+        c+=String.fromCodePoint(props.content.charCodeAt(i)-i/2-1)
+    }
+    c=c.split('').reverse().join("");
+    const content = c
         .replace(
             /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{2,256}(\.[a-z]{2,6})?\b(:[0-9]{2,5})?([-a-zA-Z0-9@:%_+.~#?&//=]*)/g,
             (r) => `<a class="${Style.selecteAble}" href="${r}" rel="noopener noreferrer" target="_blank">${r}</a>`,

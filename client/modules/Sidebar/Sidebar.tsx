@@ -95,12 +95,13 @@ function Sidebar() {
                                 onClick={() => toggleAdminDialogVisible(true)}
                             />,
                         )}
-                    <Tooltip placement="right" mouseEnterDelay={0.3} overlay={<span>源码</span>}>
+                    <Tooltip placement="right" mouseEnterDelay={0.3} overlay={<span>源码</span>} >
                         <a
                             className={Style.linkButton}
                             href="https://github.com/yinxin630/fiora"
                             target="_black"
                             rel="noopener noreferrer"
+                            style={{display: 'none'}}
                         >
                             <IconButton width={40} height={40} icon="github" iconSize={26} />
                         </a>
@@ -113,6 +114,7 @@ function Sidebar() {
                             icon="app"
                             iconSize={28}
                             onClick={() => toggleDownloadDialogVisible(true)}
+                            style={{display: 'none'}}
                         />,
                     )}
                     {renderTooltip(
@@ -123,6 +125,7 @@ function Sidebar() {
                             icon="dashang"
                             iconSize={26}
                             onClick={() => toggleRewardDialogVisible(true)}
+                            style={{display: 'none'}}
                         />,
                     )}
                     {renderTooltip(

@@ -47,11 +47,13 @@ export default function frequency({
         const count = callTimes[socketId] || 0;
 
         // 萌新限制
-        const isNewUser = await (user && Redis.has(getNewUserKey(user.toString())));
-        if (isNewUser && count >= newUserMaxCallPerMinutes) {
-            ctx.res = '接口调用失败, 你正处于萌新限制期, 请不要频繁操作';
-            return null;
-        }
+        // 2021/6/3 16:40 songyanc
+        //  not need
+        // const isNewUser = await (user && Redis.has(getNewUserKey(user.toString())));
+        // if (isNewUser && count >= newUserMaxCallPerMinutes) {
+        //     ctx.res = '接口调用失败, 你正处于萌新限制期, 请不要频繁操作';
+        //     return null;
+        // }
 
         // 普通用户限制
         if (count >= maxCallPerMinutes) {
