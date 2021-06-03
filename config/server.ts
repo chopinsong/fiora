@@ -10,12 +10,12 @@ export default {
     port: env.Port ? parseInt(env.Port, 10) : 9200,
 
     // mongodb address
-    // database: env.Database || 'mongodb://localhost:27017/fiora',
-    database: env.Database || 'mongodb://10.104.6.230:27017/fiora',
+    database: env.Database || 'mongodb://localhost:27017/fiora',
+    // database: env.Database || 'mongodb://10.104.6.230:27017/fiora',
 
     redis: {
-        // host: env.RedisHost || 'localhost',
-        host: env.RedisHost || '10.104.6.230',
+        host: env.RedisHost || 'localhost',
+        // host: env.RedisHost || '10.104.6.230',
         port: env.RedisPort ? parseInt(env.RedisPort, 10) : 6379,
     },
 

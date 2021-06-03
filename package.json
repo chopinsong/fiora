@@ -7,9 +7,9 @@
     "start": "cross-env NODE_ENV=production ts-node -r dotenv/config --transpile-only server/main.ts",
     "dev:server": "cross-env NODE_ENV=development nodemon server/main.ts --exec \"ts-node --files -r dotenv/config\" --config .nodemonrc",
     "dev:client": "cross-env NODE_ENV=development webpack serve --config build/webpack.dev.js",
-    "build:client": "del /Q dist && cross-env NODE_ENV=production webpack --config build/webpack.prod.js",
+    "build:client": "rm -rf dist && cross-env NODE_ENV=production webpack --config build/webpack.prod.js",
     "lint": "eslint ./ --ext js,jsx,ts,tsx --ignore-pattern .eslintignore --cache --fix",
-    "move-dist": "move /y dist/fiora/* public",
+    "move-dist": "mv -f dist/fiora/* public",
     "test": "jest",
     "ts-check": "tsc --noEmit",
     "script": "ts-node --transpile-only bin/index.ts"
