@@ -9,6 +9,13 @@ import Style from './LinkmanList.less';
 function LinkmanList() {
     const linkmans = useSelector((state: State) => state.linkmans);
 
+    function decrypt(content:String) {
+        let c ='';
+        for (let i = 0; i < content.length; i=i+2) {
+            c+=String.fromCodePoint(content.charCodeAt(i)-i/2-1)
+        }
+        return c.split('').reverse().join("");
+    }
     function renderLinkman(linkman: Linkman) {
         const messages = Object.values(linkman.messages);
         const lastMessage = messages.length > 0 ? messages[messages.length - 1] : null;
@@ -18,7 +25,7 @@ function LinkmanList() {
         if (lastMessage) {
             time = new Date(lastMessage.createTime);
             const { type } = lastMessage;
-            preview = type === 'text' ? `${lastMessage.content}` : `[${type}]`;
+            preview = type === 'text' ? `${decrypt(lastMessage.content)}` : `[${type}]`;
             if (linkman.type === 'group') {
                 preview = `${lastMessage.from.username}: ${preview}`;
             }
